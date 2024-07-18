@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <form method="get" class="form__city" action={% url 'weather:home' %}>
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Введите название города" class="city--input" required value={{ city }}>
+        <ul class="hint"></ul>
+        <button type="submit" class="city--submit">Искать</button>
+    </form>
+    {% if not weather and not error and recently_cities %}
+        <section class="container">
+            <h1 class="hint--title">Вы недавно смотрели</h1>
+            <ul class="hint">
+                {% for city in recently_cities.values %}
+                    <li class="hint__item">
+                        <p class="item__name">{{ city.name }}</p> -- {{ city.count }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+    {% if error %}
+        <h1 class="error">{{ error }}</h1>
+    {% endif %}
+    {% if weather %}
+        <section class="weather">
+            {% for day in weather %}
+                <card class="day">
+                    <img src={{ day.icon_url }} alt="Погода" class="day__image">
+                    <h2 class="day__date">{{ day.date }}</h2>
+                    <p class="day__description">{{ day.weather }}</p>
+                    <p class="day__temp">Температура: {{ day.temp }}°</p>
+                    <p class="day__feels_like">Ощущается как: {{ day.feels_like }}°</p>
+                    <p class="day__windy">Скорость ветра: {{ day.windy }} м/с</p>
+                    <p class="day__cloudy">Облачность: {{ day.cloudy }}</p>
+                </card>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,139 @@
+.form__city{
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.form__city .city--input{
+    border: 2px solid currentColor;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 20px;
+    transition: scale 0.35s ease-in-out;
+    border-radius: 20px;
+}
+
+.form__city .city--input:user-invalid{
+    border-color: crimson;
+    animation-name: shake;
+    animation-duration: 0.15s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+@keyframes shake {
+
+    0% {
+        translate: 0 0;
+    }
+
+    25% {
+        translate: 0 8px;
+    }
+
+    50% {
+        translate: 0 0;
+    }
+
+    75% {
+        translate: 0 -8px;
+    }
+
+    100% {
+        translate: 0 0;
+    }
+
+}
+
+.form__city .city--input:focus{
+    scale: 1.05;
+}
+
+.form__city .city--input::placeholder{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.form__city .city--submit{
+    background: linear-gradient(45deg, #ff357a, #fff172);
+    padding: 8px 12px;
+    border-radius: 12px;
+    color: #fff;
+    transition: scale 0.35s ease-in-out;
+    font-size: 18px;
+}
+
+.form__city .city--submit:hover,
+.form__city .city--submit:focus{
+    scale: 1.05 1.1;
+}
+
+.error{
+    color: #fff;
+    padding: 20px;
+}
+
+.weather{
+    max-width: 1920px;
+    margin: 150px auto 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.weather .day{
+    color: #fff;
+    border: 2px solid currentColor;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.weather .day__image{
+    width: 60px;
+    height: 60px;
+}
+
+.weather .day__date{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.weather .day__description{
+    text-transform: capitalize;
+}
+
+.form__city{
+    position: relative;
+}
+
+.form__city .hint{
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    bottom: -320px;
+    translate: -50% 0;
+}
+
+.hint__item{
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+}
+
+.hint--title{
+    color: #fff;
+    font-size: 36px;
+}
+
+.container{
+    padding: 150px 20px 20px 150px;
+}
