@@ -18,7 +18,11 @@ def home(request):
     if request.GET.get('city', False):
         city = request.GET.get('city')
         weather = requests.get(
-            f'http://api.openweathermap.org/data/2.5/forecast?appid={open_weather_token}&q={city}&units=metric&lang=ru'
+            f'http://api.openweathermap.org/data/2.5/forecast?appid={open_weather_token}&q={city}&units=metric&lang=ru',
+            headers={
+                'Content-Type': 'application/json',
+                'accept': 'application/json',
+            }
         )
         weather_data = weather.json()
 
