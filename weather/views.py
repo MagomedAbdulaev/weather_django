@@ -99,5 +99,5 @@ def get_count_all_cities(request):
         'cities': city_count
     }
 
-    return render(request, 'cities.html', context)
+    return render(request, 'cities.html', context) # JsonResponse(data) можно было использовать, но для удобства и читаемости обычный render
 
